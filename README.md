@@ -15,9 +15,10 @@ Notes:
    Types
    Nullability
    Generics (`def foo[A](a: A): A`)
+1. ADTs & Pattern Matching
 1. Type classes
    Multiversal Equality
-3. Function Composition
+1. Function Composition
     
 1. Higher-Order Functions
 1. Functors
@@ -25,5 +26,3 @@ Notes:
 1. Applicative
 1. Monads
 1. Effects
-1. ADTs & Pattern Matching
-1. 
