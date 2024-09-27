@@ -1,3 +1,5 @@
+package Effects
+
 import zio.*
 import zio.direct.*
 import zio.http.{Client, Request}

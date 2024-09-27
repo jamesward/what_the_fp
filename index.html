@@ -34,23 +34,26 @@
 						<a href="https://twitter.com/_JamesWard?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @_JamesWard</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 					</p>
 				</section>
-				<section data-background="img/warning.gif">
-					<!-- polymorphism, inheritance, encapsulation, facade, factory -->
+				<section>
+					<img src="img/oop-fp.png">
 				</section>
 				<section>
-					<h3>What does this code do?</h3>
+					<blockquote cite="asdf">
+						&ldquo;If you can use math to do something, you should&rdquo;
+					</blockquote>
+					<p><small>Philip Wadler</small></p>
 				</section>
 				<section>
-					<p>Is <code>addOne()</code> a function?</p>
+					<img src="img/fp-oop.png">
 				</section>
 				<section>
-						<blockquote cite="asdf">
-							&ldquo;If you can use math to do something, you should&rdquo;
-						</blockquote>
-						<p><small>Philip Wadler</small></p>
+					<h2>Immutability</h2>
 				</section>
 				<section>
-					<h3>A "Pure" Function</h3>
+					<h2>Expression-Oriented</h2>
+				</section>
+				<section>
+					<h2>Pure Function</h2>
 					<ul>
 						<li class="fragment">
 							Takes inputs and return outputs<br>
@@ -62,209 +65,42 @@
 							<img src="img/many_to_one.jpg" class="plain" height="140px">
 						</li>
 					</ul>
-					<pre class="fragment"><code class="hljs" data-trim>
-						val a = addOne(2)
-						val b = addOne(2)
-					</code></pre>
-					<pre class="fragment"><code class="hljs" data-trim>
-						val b = a
-					</code></pre>
-				</section>
-				<section data-background="img/alert.gif" style="color:black">
-					<h3 style="color:black">Jargon Alert!</h3>
-
-					<ul>
-						<li class="fragment">Referential Transparency</li>
-						<li class="fragment">First-order Function</li>
-					</ul>
 				</section>
 				<section>
-						<pre><code class="hljs" data-trim>
-							def upper(s: String): String = {
-								s.toUpperCase
-							}
-						</code></pre>
-						<pre class="fragment"><code class="hljs" data-trim>
-							val upper: String => String = (s: String) => s.toUpperCase
-						</code></pre>
-						<pre class="fragment"><code class="hljs" data-trim>
-							val upper: String => String = _.toUpperCase
-						</code></pre>
+					<h2>Function Composition</h2>
 				</section>
 				<section>
-					<h3>Why?</h3>
-
-					<ul>
-						<li class="fragment">Deterministic</li>
-						<li class="fragment">Provable</li>
-						<li class="fragment">Composable</li>
-					</ul>
+					<h2>Higher-Order Functions</h2>
 				</section>
 				<section>
-					<h3>First-order Composition / Chaining</h3>
-					<pre class="fragment"><code class="hljs" data-trim>
-						val count = (s: String) => s.length
-						count(upper("hello"))
-					</code></pre>
+					<h2>Functors, Foldables, Etc</h2>
+					<img src="img/for_loop.png">
 				</section>
 				<section>
-					<h3>How do I do anything useful?</h3>
-
-					<pre class="fragment"><code class="hljs" data-trim>
-						val handleRequest: Request => Response = { request =>
-							...
-						}
-					</code></pre>
+					<h2>Monads</h2>
 				</section>
 				<section>
-					<h3>What about external state?</h3>
-					<pre><code class="hljs" data-trim>
-						val getUsers: () => List[User]
-					</code></pre>
+					<h2>Make Illegal States Unrepresentable</h2>
 				</section>
 				<section>
-					<h3>Functions(Functions)</h3>
-
-					<pre class="fragment"><code class="hljs" data-trim>
-						val cu = upper.andThen(count)
-						cu("hello")
-
-						val doSomethingToFirst = (s: String, f: Char => Char) => {
-						  if (s.nonEmpty)
-						    f(s.head) + s.tail
-						  else
-						    s
-						}
-
-						val d = doSomethingToFirst("asdf", _)
-						d(_.toUpper)
-					</code></pre>
-				</section>
-				<section data-background="img/alert.gif" style="color:black">
-					<h3 style="color:black">Jargon Alert!</h3>
-
-					<ul>
-						<li class="fragment">Higher-order Functions</li>
-						<li class="fragment">Currying</li>
-					</ul>
+					<h2>ADTs & Pattern Matching</h2>
 				</section>
 				<section>
-					<h3>Operating on Items in Containers</h3>
-
-					<ul>
-						<li class="fragment">List, Option, Future, etc</li>
-						<li class="fragment">transform (map), filter, reduce</li>
-					</ul>
+					<h2>Type Classes</h2>
 				</section>
 				<section>
-					<pre><code class="hljs" data-trim>
-						"hello".map(_.toUpper)
-
-						Try("hello").map(_.toUpperCase)
-
-						val f: String => String = _.toUpperCase
-						val g: String => Int = _.length
-						val h = f andThen g
-
-						Try("hello").map(h)
-
-						Some("asdf").filter(_.contains("a"))
-
-						"hello".foldLeft(0)(_ + _.toInt)
-					</code></pre>
-				</section>
-				<section data-background="img/alert.gif" style="color:black">
-					<h3 style="color:black">Jargon Alert!</h3>
-
-					<ul>
-						<li class="fragment">Functor</li>
-						<li class="fragment">Foldable</li>
-					</ul>
+					<h2>Applicatives</h2>
 				</section>
 				<section>
-						<pre><code class="hljs" data-trim>
-								Try("hello").map(_ => Try("asdf")).flatten
-
-								val num1 = Try(StdIn.readLine("Number 1: ").toInt)
-								val num2 = Try(StdIn.readLine("Number 1 was ???; Number 2: ").toInt)
-						</code></pre>
-					</section>
-				<section>
-					<pre><code class="hljs" data-trim>
-							import scala.io.StdIn
-							import scala.util.Try
-
-							for {
-								num1 <- Try(StdIn.readLine("Number 1: ").toInt)
-								num2 <- Try(StdIn.readLine("Number 2: ").toInt)
-							} yield num1 + num2
-					</code></pre>
-				</section>
-				<section data-background="img/alert.gif" style="color:black">
-					<h3 style="color:black">Jargon Alert!</h3>
-
-					<ul>
-						<li class="fragment">Monad</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Now for something practical!</h3>
-
-					<pre class="fragment"><code class="hljs" data-trim>
-							for {
-								num      <- client.url(randomNumUrl).get().map(_.body.toInt)
-								wordReqs =  Seq.fill(num)(client.url(randomWordUrl).get().map(_.body))
-								words    <- Future.sequence(wordReqs)
-							} yield words.mkString(" ")
-					</code></pre>
-				</section>
-				<section>
-					<pre><code class="hljs" data-trim>
-						("asdf", 2)
-
-						case class Foo(name: String, age: Int)
-
-						Foo("asdf", 1)
-
-
-						sealed trait Bar
-						case class FooBar() extends Bar
-						case class BarBar() extends Bar
-
-						val b: Bar = BarBar()
-					</code></pre>
-				</section>
-				<section data-background="img/alert.gif" style="color:black">
-					<h3 style="color:black">Jargon Alert!</h3>
-
-					<ul>
-						<li class="fragment">Algebraic Data Types</li>
-						<li class="fragment">Product Types</li>
-						<li class="fragment">Sum Types</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Pattern Matching</h3>
-
-					<pre><code class="hljs" data-trim>
-							foo match {
-								case Foo(name, 2) => name
-								case _ => "arggg!"
-							}
-
-							b match {
-								case FooBar() => "foo"
-								case BarBar() => "bar"
-							}
-					</code></pre>
+					<h2>Effects</h2>
 				</section>
 				<section>
 					<h3>Where to next?</h3>
 
 					<ul>
 						<li>Slides: <a href="https://www.jamesward.com/presos">jamesward.com/presos</a></li>
+						<li>ZIO: <a href="https://zio.dev">zio.dev</a></li>
 						<li>Kotlin FP: <a href="https://arrow-kt.io/">arrow-kt.io</a></li>
-						<li>Corsera FP: <a href="https://www.coursera.org/learn/progfun1">coursera.org/learn/progfun1</a></li>
 					</ul>
 				</section>
 			</div>
