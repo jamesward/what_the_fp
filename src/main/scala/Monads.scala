@@ -20,7 +20,8 @@ def main =
   // sequencing other data types
 
   def maybeThrow: Try[String] =
-    Try(if Random.nextBoolean then "Success" else throw new Exception("Failure"))
+    Try:
+      if Random.nextBoolean then "Success" else throw new Exception("Failure")
 
   val onetwo =
     for

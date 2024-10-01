@@ -13,7 +13,7 @@ def main =
 
   println(ss)
 
-  // refactorability
+  // expressions are easily refactored - LLMs can help
 
   def nesterEgg(s: String): String =
     if s.isEmpty then

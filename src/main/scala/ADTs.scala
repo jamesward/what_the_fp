@@ -16,6 +16,8 @@ def main =
 
   val justABoolean: Boolean | Boolean = true
 
+  // tagged union or discriminated union
+  
   val bORb: Either[Boolean, Boolean] = Right(true)
 
   // Enum Type

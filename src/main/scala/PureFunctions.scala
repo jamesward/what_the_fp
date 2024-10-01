@@ -26,7 +26,8 @@ def two =
 
   val dates = Set("2023-01-01", "2023-02-15", "2023-03-30", "2023-04-12", "2023-05-25")
 
-  dates.par.foreach:
+  // then try .par.foreach
+  dates.foreach:
     date =>
       val parsed = formatter.parse(date)
       val formatted = formatter.format(parsed)

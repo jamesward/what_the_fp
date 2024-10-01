@@ -23,7 +23,7 @@ def one =
   println(billId)
 
 
-  // constraints liberate
+  // generics: constraints liberate
   def doThing[A](a: A): A = ???
 
   def doNothing(): String = "nothing"
@@ -31,6 +31,9 @@ def one =
   def doNothing2(s: String): Unit = ()
 
   def doSomething[A](a: List[A]): List[A] = a.tail
+
+
+  // specialized "primitives"
 
   def onlyName(n: Name) = n //.toUpperCase
 

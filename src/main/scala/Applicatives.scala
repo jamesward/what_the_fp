@@ -6,17 +6,12 @@ import zio.prelude.Validation
 @main
 def main =
 
-  // Functors: 1:1 transform
-  // Monads: m:1 binary tree
-  // Applicatives: m:s|s transform
-
-  // parsers, validators, error accumulators
-
   def validatePositive(n: Int): Either[String, Int] =
-    if (n > 0) Right(n) else Left(s"$n is not positive")
+    if n <= 0 then Left(s"$n is not positive") else Right(n)
 
   val numbers = List(1, 2, 3, -4, 5, -99)
 
+  // accumulator
   type ValidationResult = Either[List[String], List[Int]]
 
   def validateAll(acc: ValidationResult, item: Int): ValidationResult =
@@ -26,6 +21,7 @@ def main =
       case (Left(errors), Right(_)) => Left(errors)
       case (Right(acc), Right(value)) => Right(acc :+ value)
 
+  // Using fold
   println:
     numbers.foldLeft(Right(List.empty))(validateAll)
 
@@ -34,7 +30,8 @@ def main =
   println:
     goodNums.foldLeft(Right(List.empty))(validateAll)
 
-  // validation
+
+  // Use case: validation
 
   extension (list: List[Int])
     def validate: List[Validation[String, Int]] =

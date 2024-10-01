@@ -6,15 +6,18 @@ import scala.annotation.tailrec
 def main =
   val people = List("james", "bruce", "bill")
 
+  // map
   println:
     people.map:
       s => s.toUpperCase
 
+  // fold
   println:
     people.foldRight(0):
       (person, total) =>
         total + person.length
 
+  // many ways
   println:
     people.map(_.length).sum
 
@@ -34,7 +37,7 @@ def main =
   println:
     findJ("james", people)
 
-
+  // filter
   println:
     people.filter(_.contains('j'))
 
