@@ -17,10 +17,10 @@ jobs:
       - run: npm install
         working-directory: .presos
 
-      - run: npx @marp-team/marp-cli --engine ./engine.mjs dev2next_2024.md
+      - run: npx @marp-team/marp-cli --engine ./engine.mjs *.md
         working-directory: .presos
 
-      - run: npx @marp-team/marp-cli --engine ./engine.mjs --pdf dev2next_2024.md
+      - run: npx @marp-team/marp-cli --engine ./engine.mjs --pdf *.md
         working-directory: .presos
 
       - run: |
