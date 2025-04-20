@@ -2,14 +2,15 @@ package Applicatives
 
 import zio.prelude.Validation
 
+def validatePositive(n: Int): Either[String, Int] =
+  if n <= 0 then Left(s"$n is not positive") else Right(n)
+
+val numbers = List(1, 2, 3, -4, 5, -99)
+
+val goodNums = List(1, 2, 3)
 
 @main
-def main =
-
-  def validatePositive(n: Int): Either[String, Int] =
-    if n <= 0 then Left(s"$n is not positive") else Right(n)
-
-  val numbers = List(1, 2, 3, -4, 5, -99)
+def manual =
 
   // accumulator
   type ValidationResult = Either[List[String], List[Int]]
@@ -25,13 +26,11 @@ def main =
   println:
     numbers.foldLeft(Right(List.empty))(validateAll)
 
-  val goodNums = List(1, 2, 3)
-
   println:
     goodNums.foldLeft(Right(List.empty))(validateAll)
 
-
-  // Use case: validation
+@main
+def usingPrelude =
 
   extension (list: List[Int])
     def validate: List[Validation[String, Int]] =

@@ -4,6 +4,8 @@ import scala.util.{Random, Try}
 
 @main
 def main =
+  // often used for imperative-style sequencing
+
   val settings = Map("KEY" -> "value")
 
   val maybeKey = Option.when(Random.nextBoolean)("KEY")

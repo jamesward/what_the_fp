@@ -8,10 +8,17 @@ import scala.util.Random
 @main
 def one =
 
+  // safe computations
+
   def addOne(i: Int): Int = i + 1
+
+  println(addOne(Int.MaxValue))
 
   def addOneSafe(i: Int): Option[Int] =
     Option.unless(i == Int.MaxValue)(i + 1)
+
+  println(addOneSafe(1))
+  println(addOneSafe(Int.MaxValue))
 
 
   // nullability

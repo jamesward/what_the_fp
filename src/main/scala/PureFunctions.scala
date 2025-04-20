@@ -43,7 +43,7 @@ def three =
 @main
 def four =
   val names = List("Alice", "Bob", "Charlie")
-  //val names = List.empty[String]
+//  val names = List.empty[String]
 
   println(names.head)
-  //println(names.headOption)
+//  println(names.headOption)

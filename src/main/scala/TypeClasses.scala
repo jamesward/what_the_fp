@@ -36,6 +36,8 @@ def adhocpoly =
 
   val s = doit(acme)
 
+  // requirements are enforced by types
+  // doit("adasdf")
 
 
 
@@ -59,8 +61,10 @@ def main =
 
   val e1 = Employee(linda, "Developer")
 
+  // need the right CanEqual type class
   // println(linda == e1)
 
+  // type classes cna be derived
   given CanEqual[Employee, Person] = CanEqual.derived
 
   println(e1 == linda)

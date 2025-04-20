@@ -12,12 +12,15 @@ def main =
     else
       "a"
 
-  println(a)
+  println(a.isInstanceOf[Int])
+  println(a.isInstanceOf[String])
+  println(a.isInstanceOf[Int | String])
 
   val justABoolean: Boolean | Boolean = true
 
+
   // tagged union or discriminated union
-  
+
   val bORb: Either[Boolean, Boolean] = Right(true)
 
   // Enum Type
@@ -30,6 +33,7 @@ def main =
 
   // Pattern Matching
 
+  // warns on non-exhaustive
   a match
     case i: Int => println(s"an int: $i")
     case s: String => println(s"a string: $s")
@@ -38,11 +42,26 @@ def main =
     case IntOrString.I(i) => println(s"an int: $i")
     case IntOrString.S(s) => println(s"a string: $s")
 
-  // Products
+
+  // Product Type
+
+  trait Resettable:
+    def reset(): Unit
+
+  trait Growable:
+    def add(s: String): Unit
+
+  def addAndReset(buffer: Resettable & Growable) =
+    buffer.add("asdf")
+    buffer.reset()
+
+
+
   val intANDString: (Int, String) = (1, "a")
 
   case class Pair(i: Int, s: String)
   val p2 = Pair(1, "a")
+
 
 
   // Naming
